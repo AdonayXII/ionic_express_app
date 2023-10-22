@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Monster List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let m of monsters">
+      <ion-avatar slot="start">
+        <img *ngIf="m.filename" src="http://localhost:8080/images/{{m.filename}}" alt="image"/>
+      </ion-avatar>
+      <ion-label>
+        <h1>{{m.name}}</h1>
+        <p>{{m.type}}</p>
+        <ion-button type="submit" (click)="deleteMonster(m.id)">DELETE</ion-button>
+        <ion-button type="submit" (click)="updateMonster(m.id)">UPDATE</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addMonster()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
